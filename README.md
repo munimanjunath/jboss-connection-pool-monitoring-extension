@@ -34,12 +34,12 @@ WaitCount           |The number of requests that had to wait for a connection.
 
 Starting from EAP 6.3, DataSource statistics need to be explicitly enabled before accessing as they are disabled by default to avoid any performance impact. 
 
-Execute in jboss-cli.sh command:
+Execute in **jboss-cli.sh** command:
 ```
 /subsystem=datasources/data-source=ExampleDS:write-attribute(name=statistics-enabled,value=true)
 ```
 
-Alternatively set the statistics-enabled attribute to true in the standalone*.xml or domain.xml respectively
+Alternatively set the statistics-enabled attribute to true in the **standalone\*.xml** or **domain.xml** respectively.
 ```
 <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true" statistics-enabled="true">
 ```
@@ -48,7 +48,7 @@ To know more, please follow this [link](https://access.redhat.com/solutions/2687
 
 ## Installation ##
 
-1. After downloading and unzipping, use an editor to configure the user defined variables in ```JBossDatasourceMonitor/data-sources.sh``` according the provided comments.
+1. After downloading and unzipping, use an editor to configure the user defined variables in **JBossDatasourceMonitor/data-sources.sh** according the provided comments.
 2. Verify your settings by running data-sources.sh from the command prompt and with the user permissions of the Machine Agent. The output should look like:
 
     ```
@@ -56,8 +56,8 @@ To know more, please follow this [link](https://access.redhat.com/solutions/2687
     name=Custom Metrics|JBoss|data-source|ExampleDS|AvailableCount,aggregator=OBSERVATION,value=20
     ...
     ```
-3. Copy directory ```JBossDatasourceMonitor``` into directory ```MACHINE_AGENT_HOME/monitors```
-4. Restart the machine agent and check its log and any non empty ```jboss_data-sources_$$.err``` file in the JBossDatasourceMonitor directory. 
+3. Copy directory **JBossDatasourceMonitor** into directory **MACHINE_AGENT_HOME/monitors**
+4. Restart the machine agent, check its logs and any non empty **jboss_data-sources_$$.err** file in the **JBossDatasourceMonitor** directory. 
 5. Finally lookup the provided metrics via the AppDynamics metrics browser under:
 
     ```
@@ -68,8 +68,8 @@ To know more, please follow this [link](https://access.redhat.com/solutions/2687
 Use the following suggestions to troubleshoot any issues.
 
 -  Check the machine agent log files for any issues
-- Check any non empty ```jboss_data-sources_$$.err``` file in the JBossDatasourceMonitor directory.
-- Start jboss-cli.sh from the command line using the credentials of the machine agent and execute commands ```"connect"``` and ```"/subsystem=datasources:read-resource"``` similar to the following example:
+- Check any non empty **jboss_data-sources_$$.err** file in the **JBossDatasourceMonitor** directory.
+- Start **jboss-cli.sh** from the command line using the credentials of the machine agent and execute commands **"connect"** and **"/subsystem=datasources:read-resource"** similar to the following example:
 
    ```
    /opt/jboss-eap-6.3/bin/jboss-cli.sh
@@ -90,13 +90,13 @@ Use the following suggestions to troubleshoot any issues.
 - Adjust the script to print debug information
 
 #### Notes: ####
-- In JBoss domain mode jboss-cli.sh commands require command pre-pending with ```/host=<hostName>/server=<serverName>/```
+- In JBoss domain mode **jboss-cli.sh** commands require command pre-pending with **/host=\<hostName>/server=\<serverName>/**
 For example:
 
     ```
     /host=slave/server=server-one/subsystem=datasources/datasource=ExampleDS:read-resource(include-runtime=true)
     ```
-- By default, a Machine agent or a AppServer agent can send a fixed number of metrics to the controller. To change this limit, please follow the instructions mentioned [here](http://docs.appdynamics.com/display/PRO14S/Metrics+Limits). For example:
+- By default, a Machine agent or a AppServer agent can only send a fixed number of metrics to the controller. To change this limit, please follow the instructions mentioned [here](http://docs.appdynamics.com/display/PRO14S/Metrics+Limits). For example:
 
     ```
     java -Dappdynamics.agent.maxMetrics=2500 -jar machineagent.jar

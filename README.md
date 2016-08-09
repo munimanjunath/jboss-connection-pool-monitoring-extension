@@ -49,7 +49,7 @@ To know more, please follow this [link](https://access.redhat.com/solutions/2687
 ## Installation ##
 
 1. After downloading and unzipping, use an editor to configure the user defined variables in **JBossDatasourceMonitor/data-sources.sh** according the provided comments.
-2. Verify your settings by running data-sources.sh from the command prompt and with the user permissions of the Machine Agent. The output should look like:
+2. Verify your settings by running **data-sources.sh** from the command prompt and with the user permissions of the Machine Agent. The output should look like:
 
     ```
     name=Custom Metrics|JBoss|data-source|ExampleDS|ActiveCount,aggregator=OBSERVATION,value=10

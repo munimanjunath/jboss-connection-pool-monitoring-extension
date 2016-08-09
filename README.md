@@ -51,23 +51,23 @@ Before configuring the extension, please make sure to run the below steps to che
 
 The following table contains a list of the provided core datasource statistics:
 
-|Name|Description|
-|-|-|
-|ActiveCount|The number of active connections. Each of the connections is either in use by an application or available in the pool|
-|AvailableCount|The number of available connections in the pool.|
-|AverageBlockingTime|The average time spent blocking on obtaining an exclusive lock on the pool. The value is in milliseconds.|
-|AverageCreationTime|The average time spent creating a connection. The value is in milliseconds.|
-|CreatedCount|The number of connections created.|
-|DestroyedCount|The number of connections destroyed.|
-|InUseCount|The number of connections currently in use.|
-|MaxCreationTime|The maximum time it took to create a connection. The value is in milliseconds.|
-|MaxUsedCount|The maximum number of connections used.|
-|MaxWaitCount|The maximum number of requests waiting for a connection at the same time.|
-|MaxWaitTime|The maximum time spent waiting for an exclusive lock on the pool.|
-|TimedOut|The number of timed out connections.|
-|TotalBlockingTime|The total time spent waiting for an exclusive lock on the pool. The value is in milliseconds.|
-|TotalCreationTime|The total time spent creating connections. The value is in milliseconds.|
-|WaitCount|The number of requests that had to wait for a connection.|
+Name                | Description
+--------------------|---------------------------------
+ActiveCount         |The number of active connections. Each of the connections is either in use by an application or available in the pool
+AvailableCount      |The number of available connections in the pool.
+AverageBlockingTime |The average time spent blocking on obtaining an exclusive lock on the pool. The value is in milliseconds.
+AverageCreationTime |The average time spent creating a connection. The value is in milliseconds.
+CreatedCount        |The number of connections created.
+DestroyedCount      |The number of connections destroyed.
+InUseCount          |The number of connections currently in use.
+MaxCreationTime     |The maximum time it took to create a connection. The value is in milliseconds.
+MaxUsedCount        |The maximum number of connections used.
+MaxWaitCount        |The maximum number of requests waiting for a connection at the same time.
+MaxWaitTime         |The maximum time spent waiting for an exclusive lock on the pool.
+TimedOut            |The number of timed out connections.
+TotalBlockingTime   |The total time spent waiting for an exclusive lock on the pool. The value is in milliseconds.
+TotalCreationTime   |The total time spent creating connections. The value is in milliseconds.
+WaitCount           |The number of requests that had to wait for a connection.
 
 Note: By default, a Machine agent or a AppServer agent can send a fixed number of metrics to the controller. To change this limit, please follow the instructions mentioned [here](http://docs.appdynamics.com/display/PRO14S/Metrics+Limits). For example:
 ```

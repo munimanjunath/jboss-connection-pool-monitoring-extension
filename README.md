@@ -12,6 +12,8 @@ This monitoring extension makes use of commands via **jboss-cli.sh** instead.
 
 ### Metrics Provided ###
 
+The following table contains a list of the JBoss EAP 6 core datasource statistics:
+
 Name                | Description
 --------------------|---------------------------------
 ActiveCount         |The number of active connections. Each of the connections is either in use by an application or available in the pool

@@ -54,7 +54,7 @@ The following table contains a list of the provided core datasource statistics:
 |Name|Description|
 |-|-|
 |ActiveCount|The number of active connections. Each of the connections is either in use by an application or available in the pool|
-|AvailableCount	|The number of available connections in the pool.|
+|AvailableCount|The number of available connections in the pool.|
 |AverageBlockingTime|The average time spent blocking on obtaining an exclusive lock on the pool. The value is in milliseconds.|
 |AverageCreationTime|The average time spent creating a connection. The value is in milliseconds.|
 |CreatedCount|The number of connections created.|

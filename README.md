@@ -50,6 +50,7 @@ To know more, please follow this [link](https://access.redhat.com/solutions/2687
 
 1. After downloading and unzipping, use an editor to configure the user defined variables in ```JBossDatasourceMonitor/data-sources.sh``` according the provided comments.
 2. Verify your settings by running data-sources.sh from the command prompt and with the user permissions of the Machine Agent. The output should look like:
+
     ```
     name=Custom Metrics|JBoss|data-source|ExampleDS|ActiveCount,aggregator=OBSERVATION,value=10
     name=Custom Metrics|JBoss|data-source|ExampleDS|AvailableCount,aggregator=OBSERVATION,value=20
@@ -58,6 +59,7 @@ To know more, please follow this [link](https://access.redhat.com/solutions/2687
 3. Copy directory ```JBossDatasourceMonitor``` into directory ```MACHINE_AGENT_HOME/monitors```
 4. Restart the machine agent and check its log and any non empty ```jboss_data-sources_$$.err``` file in the JBossDatasourceMonitor directory. 
 5. Finally lookup the provided metrics via the AppDynamics metrics browser under:
+
     ```
    Application Infrastructure Performance> Root> Custom Metrics> JBoss> data-sources> DataSourceName
     ````
@@ -68,6 +70,7 @@ Use the following suggestions to troubleshoot any issues.
 -  Check the machine agent log files for any issues
 - Check any non empty ```jboss_data-sources_$$.err``` file in the JBossDatasourceMonitor directory.
 - Start jboss-cli.sh from the command line using the credentials of the machine agent and execute commands ```"connect"``` and ```"/subsystem=datasources:read-resource"``` similar to the following example:
+
    ```
    /opt/jboss-eap-6.3/bin/jboss-cli.sh
    You are disconnected at the moment. Type 'connect' to connect to the server or 'help' for the list of supported commands.
@@ -89,10 +92,12 @@ Use the following suggestions to troubleshoot any issues.
 #### Notes: ####
 - In JBoss domain mode jboss-cli.sh commands require command pre-pending with ```/host=<hostName>/server=<serverName>/```
 For example:
+
     ```
     /host=slave/server=server-one/subsystem=datasources/datasource=ExampleDS:read-resource(include-runtime=true)
     ```
 - By default, a Machine agent or a AppServer agent can send a fixed number of metrics to the controller. To change this limit, please follow the instructions mentioned [here](http://docs.appdynamics.com/display/PRO14S/Metrics+Limits). For example:
+
     ```
     java -Dappdynamics.agent.maxMetrics=2500 -jar machineagent.jar
     ```

@@ -136,6 +136,39 @@ function printIt (_m, _v) { if (length(_m) && match(_v, "^[0-9]+$")) print "name
     fi
 
   done
+  
+  
+  for ds in $DATA_SOURCES; do
+
+ echo "connect $JBOSS_HOST:$JBOSS_PORT
+$DOMAIN/subsystem=datasources/xa-data-source=${ds}/statistics=pool:read-resource(include-runtime=true)" | $JBOSS_CLI > $TMP_FILE 2>> $ERR_FILE
+    ERR=$?
+
+    if [ $ERR -ne 0 ]; then
+      echo "$JBOSS_CLI exited with error $ERR" >> $ERR_FILE
+
+      if [ $AUTO_DISCOVERY -gt 0 ]; then
+        DATA_SOURCES=""
+      fi
+
+    fi
+
+    if [ $ERR -eq 0 -a -s $TMP_FILE ]; then
+
+      cat $TMP_FILE | $AWK -F '[ ,"{}]+' -v OFS='' -v D=${ds} '
+function printIt (_m, _v) { if (length(_m) && match(_v, "^[0-9]+$")) print "name=Custom Metrics|JBoss|data-sources|" D "|" _m ",aggregator=OBSERVATION,value=" _v }
+/=>/ {gsub("L$", "", $4); printIt($2, $4)}' 2>> $ERR_FILE
+      ERR=$?
+
+      if [ $ERR -ne 0 ]; then
+        echo "$AWK exited with error $ERR" >> $ERR_FILE
+      fi
+    fi
+
+  done
+
+
+
 
   rm -f $TMP_FILE
   if [ ! -s $ERR_FILE ]; then
